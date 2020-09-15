@@ -84,7 +84,7 @@ function getWinners(callback) {
 
 console.log(getWinners(getFinals(fifaData)));
 
-/* Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
+/* ✅  Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
 
 Parameters: 
  * callback function getWinners
@@ -92,8 +92,15 @@ Parameters:
  */
 
 function getWinnersByYear(cBFunc1, cBFunc2) {
-  return `In ${cBFunc1[0]}, ${cBFunc2[0]} won the world cup!`;
+  const winnerStringArray = [];
+  for (let i = 0; i < cBFunc1.length && i < cBFunc2.length; i++) {
+    winnerStringArray.push(
+      `In ${cBFunc1[i]}, ${cBFunc2[i]} won the world cup!`
+    );
+  } //for loop
+  return winnerStringArray;
 }
+
 console.log(
   getWinnersByYear(
     getYears(getFinals(fifaData)),
@@ -106,7 +113,7 @@ console.log(
 function getAverageGoals(arr) {
   const aveGoals = arr.reduce(function (accumulator, item) {
     return Math.round(
-      (accumulator + item["Home Team Goals"] + item["Away Team Goals"]) / 2
+      (accumulator + (item["Home Team Goals"] + item["Away Team Goals"])) / 2
     );
   }, 0);
   return aveGoals;
